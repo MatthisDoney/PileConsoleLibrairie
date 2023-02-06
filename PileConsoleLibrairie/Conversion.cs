@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MesOutils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace PileConsoleLibrairie
 {
@@ -10,14 +12,36 @@ namespace PileConsoleLibrairie
     {
         static void Main(string[] args)
         {
-            try
+            Console.WriteLine("Saisissez le nombre maximal d'éléments dans la liste.");
+            int pNbElements = Utilitaires.SaisirNb();
+            Console.WriteLine("Saisissez le nombre à convertir.");
+            int pNbAConvertir = Utilitaires.SaisirNb();
+            Console.WriteLine("Saissez la nouvelle base.");
+            int pNewBase = Utilitaires.SaisirNb();
+
+
+            Pile<int> unePile = new Pile<int>();
+            string retour = "";
+
+            while (pNbAConvertir != 0)
             {
-                Console.Write("Saisie du nombre d'éléments maximum de la pile. ");
-                int nbMax = SaisirNb(1, 100);
-                Console.Write("Saisie du nombre à convertir. ");
-                int nbAConvertir = SaisirNb(2);
-                // Instanciation d'un objet de classe Pile
+                unePile.Empiler(pNbAConvertir % pNewBase);
+                pNbAConvertir /= pNewBase;
             }
+
+            while (!unePile.PileVide())
+            {
+                int nbDepile = unePile.Depiler();
+                if (nbDepile >= 10)
+                {
+                    retour += nbDepile.ToString("X");
+                }
+                else
+                {
+                    retour += nbDepile.ToString();
+                }
+            }
+            Console.WriteLine(retour);
         }
     }
 }
