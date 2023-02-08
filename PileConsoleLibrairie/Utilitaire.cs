@@ -14,10 +14,12 @@ namespace MesOutils
         /// <returns></returns>
         public static int SaisirNb()
         {
-               Console.Write("Veuillez saisir une valeur : ");
-               int nb = Convert.ToInt32(Console.ReadLine());
+            
+                Console.Write("Veuillez saisir une valeur : ");
+                int nb = Convert.ToInt32(Console.ReadLine());
                 return nb;
-               
+            
+            
         }
 
     }

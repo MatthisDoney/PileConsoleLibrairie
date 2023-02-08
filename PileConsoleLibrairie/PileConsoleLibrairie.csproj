@@ -41,8 +41,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="UtilitairesSlam">
-      <HintPath>.\UtilitairesSlam.dll</HintPath>
+    <Reference Include="UtilitairesSlam, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\UtilitairesSlam\UtilitairesSlam\bin\Release\UtilitairesSlam.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -12,36 +12,51 @@ namespace PileConsoleLibrairie
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Saisissez le nombre maximal d'éléments dans la liste.");
-            int pNbElements = Utilitaires.SaisirNb();
-            Console.WriteLine("Saisissez le nombre à convertir.");
-            int pNbAConvertir = Utilitaires.SaisirNb();
-            Console.WriteLine("Saissez la nouvelle base.");
-            int pNewBase = Utilitaires.SaisirNb();
 
 
-            Pile<int> unePile = new Pile<int>();
-            string retour = "";
 
-            while (pNbAConvertir != 0)
+            try
             {
-                unePile.Empiler(pNbAConvertir % pNewBase);
-                pNbAConvertir /= pNewBase;
-            }
+                Console.WriteLine("Saisissez le nombre à convertir.");
+                int pNbAConvertir = Utilitaires.SaisirNb();
 
-            while (!unePile.PileVide())
-            {
-                int nbDepile = unePile.Depiler();
-                if (nbDepile >= 10)
+                Console.WriteLine("Saissez la nouvelle base.");
+                int pNewBase = Utilitaires.SaisirNb();
+
+
+                Pile<int> unePile = new Pile<int>();
+                string retour = "";
+
+                while (pNbAConvertir != 0)
                 {
-                    retour += nbDepile.ToString("X");
+                    unePile.Empiler(pNbAConvertir % pNewBase);
+                    pNbAConvertir /= pNewBase;
                 }
-                else
+
+                while (!unePile.PileVide())
                 {
-                    retour += nbDepile.ToString();
+                    int nbDepile = unePile.Depiler();
+                    if (nbDepile >= 10)
+                    {
+                        retour += nbDepile.ToString("X");
+                    }
+                    else
+                    {
+                        retour += nbDepile.ToString();
+                    }
                 }
+                Console.WriteLine(retour);
+                
             }
-            Console.WriteLine(retour);
+            catch(FormatException ex)
+            {
+                Console.WriteLine("Erreur de Format de nombres");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Fin anormale du Programme");
+                
+            }
+            Console.ReadKey();
         }
-    }
-}
+    } }
